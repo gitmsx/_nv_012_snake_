@@ -17,6 +17,8 @@ public class ShiftTile : MonoBehaviour
     [HideInInspector] private Text Text__info002;
     [HideInInspector] private Text Text__info003;
 
+    [HideInInspector] float CoroutineTimerefresh = 0.1f;
+
     [SerializeField] float TimeToMove = 3.00f;
     private float TimePassed = 0.00f;
 
@@ -55,14 +57,9 @@ public class ShiftTile : MonoBehaviour
             CorutCalls++;
             TimePassed += Time.deltaTime;
             this.transform.position = Vector3.Lerp(this.transform.position, startPosition, TimePassed / TimeToMove);
-           // this.transform.position = Vector3.Lerp(this.transform.position, startPosition, 0.1f );
-
-            //if     ((CorutCalls++) %100 == 0) { 
-
-            //Text__info001.text = "TimePassed " + (TimePassed).ToString()+ "TimeToMove " +  (TimeToMove).ToString() + " / "+ ((TimePassed / TimeToMove)).ToString();
-            // Text__info002.text = CorutCalls.ToString();
-            //}
-            yield return null;
+            
+           // yield return null;
+            yield return new  WaitForSeconds(CoroutineTimerefresh);
         }
 
       
