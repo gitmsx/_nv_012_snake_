@@ -17,7 +17,7 @@ public class ShiftTile : MonoBehaviour
     [HideInInspector] private Text Text__info002;
     [HideInInspector] private Text Text__info003;
 
-    [HideInInspector] float CoroutineTimerefresh = 0.1f;
+    [SerializeField] float CoroutineTimerefresh = 0.1f;
 
     [SerializeField] float TimeToMove = 3.00f;
     private float TimePassed = 0.00f;
