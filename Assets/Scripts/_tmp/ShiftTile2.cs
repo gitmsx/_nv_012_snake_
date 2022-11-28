@@ -5,12 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ShiftTile : MonoBehaviour
+public class ShiftTile2 : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int copia;
-    public int copiai;
-    public int copiay;
+
 
     public float amount = 0.4f;
 
@@ -25,7 +23,7 @@ public class ShiftTile : MonoBehaviour
     private float TimePassed = 0.00f;
 
     int CorutCalls = 0;
-     int gridSizeGet = _global.gridSize ;
+
 
 
 
@@ -54,19 +52,18 @@ public class ShiftTile : MonoBehaviour
         
 
         
-        while (this.transform.position.y - startPosition.y > 0.05f && TimePassed< (TimeToMove + copia / gridSizeGet))
+        while (this.transform.position.y - startPosition.y > 0.05f && TimePassed < TimeToMove)
         {
             CorutCalls++;
             TimePassed += Time.deltaTime;
-            this.transform.position = Vector3.Lerp(this.transform.position, startPosition, (TimePassed ) / (TimeToMove + copia/ gridSizeGet));
+            this.transform.position = Vector3.Lerp(this.transform.position, startPosition, TimePassed / TimeToMove);
             
            // yield return null;
             yield return new  WaitForSeconds(CoroutineTimerefresh);
         }
 
-        this.transform.position = startPosition;
-    //  print(copia);
-
+      
+       
     }
 
 }
