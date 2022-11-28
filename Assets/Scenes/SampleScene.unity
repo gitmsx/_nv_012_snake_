@@ -311,6 +311,7 @@ MonoBehaviour:
   CoroutineTimerefresh: 0.01
   TimeToMove: 7
   flySoundWood: {fileID: 0}
+  StartSound: {fileID: 0}
 --- !u!65 &376102832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -399,7 +400,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9e37cf3c4e693254ab9b578751217817, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -525,7 +526,8 @@ MonoBehaviour:
   scale_speed: 0.2
   CoroutineTimerefresh: 0.01
   TimeToMove: 12
-  flySoundWood: {fileID: 0}
+  flySoundWood: {fileID: 8300000, guid: 9e37cf3c4e693254ab9b578751217817, type: 3}
+  StartSound: {fileID: 0}
 --- !u!65 &444108660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -614,7 +616,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9e37cf3c4e693254ab9b578751217817, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

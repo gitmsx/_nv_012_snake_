@@ -28,6 +28,7 @@ public class ShiftTile : MonoBehaviour
      int gridSizeGet = _global.gridSize ;
     AudioSource audioSource;
     [SerializeField] AudioClip flySoundWood;
+    [SerializeField] AudioClip StartSound;
 
 
     Vector3 startPosition;
@@ -43,6 +44,7 @@ public class ShiftTile : MonoBehaviour
 
         startPosition = this.transform.position;
         this.transform.position = this.transform.position + Vector3.up * amount;
+        audioSource.PlayOneShot(StartSound);
         StartCoroutine(CorChess());
 
     }
@@ -73,7 +75,7 @@ public class ShiftTile : MonoBehaviour
         transform.transform.rotation = Quaternion.Euler(0, 180, 0);
 
 
-//        audioSource.Stop();
+        //        audioSource.Stop();
         audioSource.PlayOneShot(flySoundWood);
 
         //  print(copia);
