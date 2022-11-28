@@ -20,6 +20,10 @@ public class ShiftTile : MonoBehaviour
     [SerializeField] float TimeToMove = 3.00f;
     private float TimePassed = 0.00f;
 
+    int CorutCalls = 0;
+
+
+
 
 
     Vector3 startPosition;
@@ -31,6 +35,7 @@ public class ShiftTile : MonoBehaviour
         Text__info002 = GameObject.Find("Text__info002").GetComponent<Text>();
         Text__info003 = GameObject.Find("Text__info003").GetComponent<Text>();
         Text__info003.text = "Text__info003";
+        
 
         startPosition = this.transform.position;
         this.transform.position = this.transform.position + Vector3.up * amount;
@@ -43,15 +48,21 @@ public class ShiftTile : MonoBehaviour
     IEnumerator CorChess()
     {
 
-        TimePassed += Time.deltaTime;
+        
         while (this.transform.position.y - startPosition.y > 0.05f && TimePassed < TimeToMove)
         {
             this.transform.position = Vector3.Lerp(this.transform.position, startPosition, TimePassed / TimeToMove);
-            yield return new WaitForSeconds(scale_speed);
+
+            if     ((CorutCalls++) %100 == 0) { 
+            
+            Text__info001.text = "TimePassed " + (TimePassed).ToString()+ "TimeToMove " +  (TimeToMove).ToString() + " / "+ ((TimePassed / TimeToMove)).ToString();
+             Text__info002.text = CorutCalls.ToString();
+            }
+            yield return null;
         }
 
-      //  Text__info003.text = ((int)(TimePassed / TimeToMove)).ToString();
-        this.transform.position = startPosition;
+      
+       
     }
 
 }
