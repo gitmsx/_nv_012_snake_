@@ -26,15 +26,15 @@ public class ShiftTile : MonoBehaviour
 
     int CorutCalls = 0;
      int gridSizeGet = _global.gridSize ;
-
-
+    AudioSource audioSource;
+    [SerializeField] AudioClip flySoundWood;
 
 
     Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         Text__info001 = GameObject.Find("Text__info001").GetComponent<Text>();
         Text__info002 = GameObject.Find("Text__info002").GetComponent<Text>();
         Text__info003 = GameObject.Find("Text__info003").GetComponent<Text>();
@@ -54,18 +54,29 @@ public class ShiftTile : MonoBehaviour
         
 
         
-        while (this.transform.position.y - startPosition.y > 0.05f && TimePassed< (TimeToMove + copia / gridSizeGet))
+        while (this.transform.position.y - startPosition.y > 0.08f && TimePassed< (TimeToMove + copia / gridSizeGet))
         {
             CorutCalls++;
             TimePassed += Time.deltaTime;
-            this.transform.position = Vector3.Lerp(this.transform.position, startPosition, (TimePassed ) / (TimeToMove + copia/ gridSizeGet));
-            
-           // yield return null;
+            this.transform.position = Vector3.Lerp(this.transform.position, startPosition, (TimePassed) / (TimeToMove + copia / gridSizeGet));
+
+
+
+            // transform.eulerAngles = new Vector3(transform.eulerAngles.x, yrotation2, transform.eulerAngles.z);
+            transform.transform.rotation = Quaternion.Lerp(transform.transform.rotation, Quaternion.Euler(0, 180, 0), (TimePassed) / (TimeToMove + copia / gridSizeGet));
+
+            // yield return null;
             yield return new  WaitForSeconds(CoroutineTimerefresh);
         }
 
         this.transform.position = startPosition;
-    //  print(copia);
+        transform.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+
+//        audioSource.Stop();
+        audioSource.PlayOneShot(flySoundWood);
+
+        //  print(copia);
 
     }
 

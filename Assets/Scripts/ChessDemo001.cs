@@ -11,11 +11,13 @@ public class ChessDemo001 : MonoBehaviour
     public Vector3 startPosition;
     public float amount;
     public int gridSizeUser = 5;
-
-
+    AudioSource audioSource;
+    [SerializeField] AudioClip flySoundWood;
 
     void Start()
     {
+
+        audioSource = GetComponent<AudioSource>();
         _global.gridSize = gridSizeUser;
         StartCoroutine(ChessFields());
     }
