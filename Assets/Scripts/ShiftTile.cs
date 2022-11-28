@@ -47,17 +47,21 @@ public class ShiftTile : MonoBehaviour
 
     IEnumerator CorChess()
     {
+        
 
         
         while (this.transform.position.y - startPosition.y > 0.05f && TimePassed < TimeToMove)
         {
+            CorutCalls++;
+            TimePassed += Time.deltaTime;
             this.transform.position = Vector3.Lerp(this.transform.position, startPosition, TimePassed / TimeToMove);
+           // this.transform.position = Vector3.Lerp(this.transform.position, startPosition, 0.1f );
 
-            if     ((CorutCalls++) %100 == 0) { 
-            
-            Text__info001.text = "TimePassed " + (TimePassed).ToString()+ "TimeToMove " +  (TimeToMove).ToString() + " / "+ ((TimePassed / TimeToMove)).ToString();
-             Text__info002.text = CorutCalls.ToString();
-            }
+            //if     ((CorutCalls++) %100 == 0) { 
+
+            //Text__info001.text = "TimePassed " + (TimePassed).ToString()+ "TimeToMove " +  (TimeToMove).ToString() + " / "+ ((TimePassed / TimeToMove)).ToString();
+            // Text__info002.text = CorutCalls.ToString();
+            //}
             yield return null;
         }
 
